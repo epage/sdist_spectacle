@@ -1,0 +1,8 @@
+Distutil command for generating spectacle files
+
+http://docs.python.org/distutils/index.html
+http://wiki.meego.com/Spectacle
+http://pyyaml.org/wiki/PyYAMLDocumentation
+
+Example:
+https://build.opensuse.org/package/view_file?file=leo.yaml&package=leo&project=home:vivainio:leo
