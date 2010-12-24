@@ -30,20 +30,21 @@ class sdist_spectacle(Command):
     # List of option tuples: long name, short name (None if no short
     # name), and help string.
     __options = [
-        ("name", lambda self: self.distribution.get_name(), "Name"),
-        ("summary", lambda self: self.distribution.get_description(), "Summary"),
-        ("description", lambda self: self.distribution.get_long_description(), "Description"),
-        ("version", lambda self: self.distribution.get_version(), "Version"),
-        ("release", lambda self: 0, "Release"),
-        ("group", lambda self: "", "Group"),
-        ("license", lambda self: self.distribution.get_license(), "License"),
-        ("url", lambda self: self.distribution.get_url(), "URL"),
-        ("pkgBR", lambda self: ["python-dev"], "Packages required in building, or BuildRequires "),
-        ("configure", lambda self: "none", "autogen, configure, reconfigure, none"),
-        ("builder", lambda self: "python", "make, single-make, python, perl, qmake, none"),
-        ("sources", lambda self: ["%s-%s.tar.gz" % (self.name, self.version)], "Sources"),
-        ("supportOtherDistros", lambda self: True, "Whether need to check for other distros (besides MeeGo) "),
-        ("noDesktop", lambda self: False, "Whether to install the desktop files in package "),
+        ("Name", lambda self: self.distribution.get_name(), "Name"),
+        ("Summary", lambda self: self.distribution.get_description(), "Summary"),
+        ("Description", lambda self: self.distribution.get_long_description(), "Description"),
+        ("Version", lambda self: self.distribution.get_version(), "Version"),
+        ("Release", lambda self: None, "Release"),
+        ("Group", lambda self: None, "Group"),
+        ("Provides", lambda self: None, "Provides"),
+        ("License", lambda self: self.distribution.get_license(), "License"),
+        ("URL", lambda self: self.distribution.get_url(), "URL"),
+        ("PkgBR", lambda self: ["python-dev"], "Packages required in building, or BuildRequires "),
+        ("Configure", lambda self: "none", "autogen, configure, reconfigure, none"),
+        ("Builder", lambda self: "python", "make, single-make, python, perl, qmake, none"),
+        ("Sources", lambda self: ["%s-%s.tar.gz" % (self.Name, self.Version)], "Sources"),
+        ("SupportOtherDistros", lambda self: True, "Whether need to check for other distros (besides MeeGo) "),
+        ("NoDesktop", lambda self: False, "Whether to install the desktop files in package "),
     ]
 
     user_options = [
@@ -79,6 +80,6 @@ class sdist_spectacle(Command):
         except:
             pass
 
-        spectacleFilename = os.path.join(self.dist_dir, "%s.yaml" % self.name)
+        spectacleFilename = os.path.join(self.dist_dir, "%s.yaml" % self.Name)
         with open(spectacleFilename, "w") as spectacleFile:
             yaml.dump(spectacleContent, spectacleFile)
