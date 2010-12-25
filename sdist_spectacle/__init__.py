@@ -46,6 +46,7 @@ class sdist_spectacle(Command):
         ("SupportOtherDistros", lambda self: True, "Whether need to check for other distros (besides MeeGo) "),
         ("NoDesktop", lambda self: False, "Whether to install the desktop files in package "),
     ]
+    __needListHack = ("Provides", )
 
     user_options = [
         (option[0], None, option[2])
@@ -68,6 +69,11 @@ class sdist_spectacle(Command):
             get_default = option[1]
             if getattr(self, name) is None:
                 setattr(self, name, get_default(self))
+        for name in self.__needListHack:
+            items = getattr(self, name)
+            listOfItems = items.split(",")
+            listOfItems = [item.strip() for item in listOfItems]
+            setattr(self, name, listOfItems)
 
     def run(self):
         spectacleContent = {}
