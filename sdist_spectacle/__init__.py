@@ -51,6 +51,9 @@ class sdist_spectacle(Command):
         (option[0], None, option[2])
         for option in __options
     ]
+    user_options.extend([
+        ('dist-dir=', 'd', "directory to put the source distribution archive(s) in [default: dist]"),
+    ])
 
     def initialize_options(self):
         self.dist_dir = None
@@ -59,8 +62,7 @@ class sdist_spectacle(Command):
             setattr(self, name, None)
 
     def finalize_options(self):
-        if self.dist_dir is None:
-            self.dist_dir = "dist"
+        self.set_undefined_options('sdist', ('dist_dir', 'dist_dir'))
         for option in self.__options:
             name = option[0]
             get_default = option[1]
