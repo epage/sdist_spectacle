@@ -27,13 +27,13 @@ class sdist_spectacle(Command):
     # Brief (40-50 characters) description of the command
     description = "Meego Spectacle File Generator"
 
-    # List of option tuples: long name, short name (None if no short
-    # name), and help string.
+    # List of option tuples: long name, default, help string
     __options = [
         ("Name", lambda self: self.distribution.get_name(), "Name"),
         ("Summary", lambda self: self.distribution.get_description(), "Summary"),
         ("Description", lambda self: self.distribution.get_long_description(), "Description"),
         ("Version", lambda self: self.distribution.get_version(), "Version"),
+        ("Files", lambda self: ["/usr"], ""),
         ("Release", lambda self: None, "Release"),
         ("Group", lambda self: None, "Group"),
         ("Provides", lambda self: None, "Provides"),
