@@ -39,7 +39,7 @@ class sdist_spectacle(Command):
         ("Provides", lambda self: None, "Provides"),
         ("License", lambda self: self.distribution.get_license(), "License"),
         ("URL", lambda self: self.distribution.get_url(), "URL"),
-        ("PkgBR", lambda self: ["python-dev"], "Packages required in building, or BuildRequires "),
+        ("PkgBR", lambda self: ["python-devel"], "Packages required in building, or BuildRequires "),
         ("Configure", lambda self: "none", "autogen, configure, reconfigure, none"),
         ("Builder", lambda self: "python", "make, single-make, python, perl, qmake, none"),
         ("Sources", lambda self: ["%s-%s.tar.gz" % (self.Name, self.Version)], "Sources"),
